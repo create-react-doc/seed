@@ -6,22 +6,11 @@ import Loading from './component/Loading';
 import './index.less';
 
 // run in the Web/Router.js
-export default function (Lazyload, props) {
-  const LoadableComponent = Lazyload({
-    component: () => import('./routes/Pages'),
-    LoadingComponent: Loading,
-  });
-
-  // routing load component
-  if (props.routeData && props.routeData.length > 0) {
-    props.routeData.map((item) => {
-      item.component = LoadableComponent;
-      return item;
-    });
-  }
-
+const Seed = function({
+  Lazyload,
+  props
+}) {
   return (
-    // todo: here.
     <Switch>
       <Route
         path="/404"
